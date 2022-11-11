@@ -1,17 +1,19 @@
-import {removeAllChildNodes} from './clear-section'
+export const section = document.querySelector('.section');
+export const tabs = document.querySelectorAll('.tab');  
+export const inboxTab = document.createElement('div');
+export const todayTab = document.createElement('div');
+export const upcomingTab = document.createElement('div');
+export const filtersTab = document.createElement('div');
+export const workTab = document.createElement('div');
+export const personalTab = document.createElement('div');
+
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+  }
+};
+
 export const tabSelection = () => {
-  const section = document.querySelector('.section');
-  const tabs = document.querySelectorAll('.topSideBar');  
-  const inboxTab = document.createElement('div');
-  const todayTab = document.createElement('div');
-  const upcomingTab = document.createElement('div');
-  const filtersTab = document.createElement('div');
-
-  inboxTab.textContent = 'INBOX';
-  todayTab.textContent = 'TODAY';
-  upcomingTab.textContent = 'UPCOMING';
-  filtersTab.textContent = 'FILTERS & LABELS';
-
   tabs.forEach((tab) => {
     tab.addEventListener('click', () => {
       if (tab.id == 'inbox') {
@@ -26,9 +28,13 @@ export const tabSelection = () => {
       } else if (tab.id == 'filters') {
         removeAllChildNodes(section);
         section.appendChild(filtersTab);
+      } else if (tab.id == "personal") {
+        removeAllChildNodes(section);
+        section.appendChild(personalTab);
+      } else if (tab.id == 'work') {
+        removeAllChildNodes(section);
+        section.appendChild(workTab);
       }
     })
   })
-
-
 }

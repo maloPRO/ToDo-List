@@ -80,7 +80,7 @@ body {
   font-weight: 300;
   font-size: .9rem;
 }
-.topSideBar {
+#upperSideBar .tab {
   grid-template: 1fr /.1fr 1fr .1fr;
   display: grid;
   align-items: center;
@@ -89,13 +89,22 @@ body {
   border-radius: 3px;
 
 }
-.topSideBar:hover {
+.tab:hover {
   cursor: pointer;
   background-color: rgba(255,255,255,0.8);
 }
-.topSideBar img {
+#upperSidebar .tab img {
   margin-right: 10px;
 }
+#categoriesHeader {
+  font-weight: 900;
+  margin-bottom: 5px;
+}
+#categories .tab {
+  padding: 5px;
+
+}
+
 #section {
   grid-area: 2/2/3/3;
 }
