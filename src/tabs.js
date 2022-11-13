@@ -7,6 +7,8 @@ export const filtersTab = document.createElement('div');
 export const workTab = document.createElement('div');
 export const personalTab = document.createElement('div');
 
+
+
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
       parent.removeChild(parent.firstChild);
