@@ -56,9 +56,6 @@ body {
   align-items: center;
   justify-content: center;
 }
-#search {
-  justify-content: left;
-}
 #profile p {
   width: 1.5rem;
   height: 1.5rem;
@@ -74,12 +71,6 @@ body {
  .navRightItems:hover {
   cursor: pointer;
   background-color: #ce5b52;
-}
-#search input:hover {
-  background-color: #fdf6e4;
-}
-#searchBar:hover::placeholder {
-  color: #999;
 }
 #sidebar {
   grid-area: 2/1/3/2;
@@ -107,13 +98,20 @@ body {
 #upperSidebar .tab img {
   margin-right: 10px;
 }
-#categoriesHeader {
-  font-weight: 900;
-  margin-bottom: 5px;
-}
-#categories .tab {
-  padding: 5px;
 
+/* Projects */
+
+#projectsSectionTitle {
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+.projects {
+  display: grid;
+  align-items: center;
+  width: 100%;
+  height: 2em;
+  font: 1rem;
+  background-color: red;
 }
 #todayTab {
   width: 100%;

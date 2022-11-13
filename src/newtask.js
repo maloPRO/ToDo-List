@@ -7,15 +7,11 @@ class Task {
     this.description = description;
     this.category = category;
   }
-  get desc () {
-    return `${this.title} is a task due on ${this.dueDate}`
-  }
 };
 
 let taskList = [];
 
 const addTask = () => {
-
   let title = document.getElementById('title');
   let category = document.getElementById('category');
   let dueDate = document.getElementById('dueDate');
@@ -24,8 +20,6 @@ const addTask = () => {
   const tasks = new Task(title.value, category.value, dueDate.value, description.value);
 
   taskList.push(tasks);
-  console.log(tasks.dueDate);
-
 };
 
 const openForm = () => { document.getElementById('formContainer').style.display = 'block';};
@@ -40,6 +34,15 @@ form.addEventListener('submit', handleForm);
 document.getElementById('addTask').addEventListener('click', openForm);
 document.getElementById('closeBtn').addEventListener('click', closeForm);
 document.getElementById('submitBtn').addEventListener('click', addTask);
+
+const newProject = () => {
+  const projects = document.getElementById('projects');
+  
+  const projectSectionTitle = document.createElement('h3');
+  projectSectionTitle.setAttribute('id', 'projectsSectionTitle');
+  projectSectionTitle.textContent = 'Projects';
+  projects.appendChild(projectSectionTitle);
+}
 
 return {}
 

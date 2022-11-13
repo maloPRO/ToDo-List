@@ -1,10 +1,13 @@
 import { format , getDay, addDays} from 'date-fns';
 import { tabSelection } from './tabs';
 import { inboxContent} from './inbox';
-import { todayContent} from './today';
 import css from './main.css';
 import { newTask } from './newtask';
-
-todayContent();
+import { todaysTasks } from './today';
+import {myProjects} from './projects';
 inboxContent();
 tabSelection();
+
+
+myProjects.newProject();
+todaysTasks.todayContent();
