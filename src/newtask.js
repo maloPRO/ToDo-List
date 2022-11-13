@@ -1,7 +1,4 @@
-
 const newTask = (function () {
-
-let taskList = [];
 
 class Task {
   constructor (title, dueDate, description, category) {
@@ -14,6 +11,8 @@ class Task {
     return `${this.title} is a task due on ${this.dueDate}`
   }
 };
+
+let taskList = [];
 
 const addTask = () => {
 
@@ -32,17 +31,14 @@ const addTask = () => {
 const openForm = () => { document.getElementById('formContainer').style.display = 'block';};
 const closeForm = () => { document.getElementById('formContainer').style.display = 'none';};
 
-document.getElementById('addTask').addEventListener('click', openForm);
-document.getElementById('closeBtn').addEventListener('click', closeForm);
-
-
 form = document.getElementById('form');
     function handleForm(event) {
         event.preventDefault();
 };
 
 form.addEventListener('submit', handleForm);
-
+document.getElementById('addTask').addEventListener('click', openForm);
+document.getElementById('closeBtn').addEventListener('click', closeForm);
 document.getElementById('submitBtn').addEventListener('click', addTask);
 
 return {}
