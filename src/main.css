@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'roboto', sans-serif;
 }
 body {
   width: 100vw;
@@ -20,6 +21,7 @@ body {
   background-color: #0c4a6e;
   display: grid;
   grid-template: 1fr / repeat(3, 1fr);
+  font-weight: 900;
 }
 #navLeft {
   display: grid;
@@ -84,9 +86,13 @@ body {
   border-radius: 3px;
 
 }
-.tab:hover {
+.tab:hover,
+.projects:hover {
   cursor: pointer;
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgba(255,255,255,0.9);
+  color: #333;
+  font-weight: 900;
+
 }
 #upperSidebar .tab img {
   margin-right: 10px;
@@ -107,10 +113,6 @@ body {
   font: 1.2rem;
   font-weight: 300;
 }
-.projects:hover {
-  background-color: beige;
-  cursor: pointer;
-}
 
 #projectInputContainer {
   display: grid;
@@ -119,9 +121,9 @@ body {
 #newProjectInput {
   grid-area: 1/1/2/3;
   width: 100%;
-  height: 1.5rem;
+  height: 2rem;
   padding: 5px;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
   border: none;
 }
 #projectInputBtns {
@@ -131,16 +133,22 @@ body {
   gap: 10px;
   grid-template: 1fr / 1fr 1fr;
   justify-content: center;
+  
 }
 #projectInputBtns button:first-child {
   background-color: #16a34a;
   border: none;
   border-radius: 3px;
+  color: #f0f9ff;
 }
 #projectInputBtns button:nth-child(2) {
   background-color: #ef4444;
   border: none;
   border-radius: 3px;
+  color: #f0f9ff;
+}
+#projectInputBtns button:hover {
+  cursor: pointer;
 }
 .projectsContainer {
   display: grid;
@@ -196,13 +204,15 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #f0f9ff;
+  background-color: #0c4a6e;
+  color: #f0f9ff;
   width: 45rem;
   height: 25rem;
+  border-radius: 5px;
 }
 form {
   display: grid;
-  grid-template: 1.3fr repeat(3, 2fr) 1.3fr / repeat(2, 1fr);
+  grid-template: 1.3fr repeat(3, 2fr) 1.5fr / repeat(2, 1fr);
   width: 100%;
   height: 100%;
 }
@@ -251,13 +261,37 @@ form #task-project {
 form #task-priority {
   grid-area: 3/2/4/3;
 }
-form #form-buttons {
-  grid-area: 5/2/6/3;
+#form-buttons {
+  grid-area: 5/1/6/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+#form-buttons button {
+  width: 18%;
+  height: 60%;
+  border: none;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  margin: 5px;
+  font-weight: 500;
+}
+#submitBtn {
+  background-color: #16a34a;
+  color: #f0f9ff;
+}
+#closeBtn {
+  background-color: #ef4444;
+  color: #f0f9ff;
+}
+#form-buttons button:hover {
+  cursor: pointer;
 }
 .taskInput {
   width: 100%;
   height: 100%;
-  padding: 10px  20px 10px 20px;
+  padding: 0  20px 0 20px;
   display: grid;
 }
 .taskInput label {
@@ -272,4 +306,8 @@ form #form-buttons {
 .input {
   width: 100%;
   border: 1px solid rgb(196, 194, 194);
+  border-radius: 3px;
+  padding: 5px;
+  font-size: 1rem;
+
 }

@@ -7,6 +7,11 @@ export const myProjects = (function () {
     projectSectionTitle.textContent = 'Projects';
     projects.appendChild(projectSectionTitle);
 
+    const defaultProject = document.createElement('div');
+    defaultProject.setAttribute('class', 'projects');
+    defaultProject.textContent = "Personal";
+    projects.appendChild(defaultProject);
+
     const addProject = document.createElement('div');
     addProject.setAttribute('id', 'addProject');
     addProject.setAttribute('class', 'projects');

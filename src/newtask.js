@@ -25,15 +25,11 @@ const addTask = () => {
 const openForm = () => { document.getElementById('formContainer').style.display = 'block';};
 const closeForm = () => { document.getElementById('formContainer').style.display = 'none';};
 
-form = document.getElementById('form');
-    function handleForm(event) {
-        event.preventDefault();
-};
-
-form.addEventListener('submit', handleForm);
 document.getElementById('addTask').addEventListener('click', openForm);
 document.getElementById('closeBtn').addEventListener('click', closeForm);
 document.getElementById('submitBtn').addEventListener('click', addTask);
+document.getElementById('formClose').addEventListener('click', closeForm);
+
 
 return {}
 
