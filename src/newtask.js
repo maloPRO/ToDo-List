@@ -35,15 +35,6 @@ document.getElementById('addTask').addEventListener('click', openForm);
 document.getElementById('closeBtn').addEventListener('click', closeForm);
 document.getElementById('submitBtn').addEventListener('click', addTask);
 
-const newProject = () => {
-  const projects = document.getElementById('projects');
-  
-  const projectSectionTitle = document.createElement('h3');
-  projectSectionTitle.setAttribute('id', 'projectsSectionTitle');
-  projectSectionTitle.textContent = 'Projects';
-  projects.appendChild(projectSectionTitle);
-}
-
 return {}
 
 })();

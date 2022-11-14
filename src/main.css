@@ -103,8 +103,45 @@ body {
   align-items: center;
   width: 100%;
   height: 2em;
-  font: 1rem;
+  font: 1.2rem;
+  font-weight: 300;
 }
+.projects:hover {
+  background-color: beige;
+  cursor: pointer;
+}
+
+#projectInputContainer {
+  display: grid;
+  grid-template: 1fr 1fr / 1fr ;
+}
+#newProjectInput {
+  grid-area: 1/1/2/3;
+  width: 100%;
+  height: 1.5rem;
+  padding: 5px;
+  margin-bottom: 3px;
+}
+#projectInputBtns {
+  width: 100%;
+  display: grid;
+  gap: 10px;
+  grid-template: 1fr / 1fr 1fr;
+  justify-content: center;
+}
+.projectsContainer {
+  display: grid;
+  grid-template: 1fr / 4fr 1fr;
+}
+.deleteProject {
+  background: inherit;
+  border: none;
+}
+.deleteProject:hover {
+  background-color: beige;
+  color: red;
+}
+
 #todayTab {
   width: 100%;
   height: 100%;
