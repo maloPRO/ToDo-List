@@ -22,7 +22,7 @@ export const myProjects = (function () {
 
       const input = document.createElement('input');
       input.setAttribute('type', 'text');
-      input.setAttribute('name', 'projectName');
+      input.setAttribute('placeholder', 'Project Title');
       input.setAttribute('id', 'newProjectInput');
       
       projectInputContainer.appendChild(input);
