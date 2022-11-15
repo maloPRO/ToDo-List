@@ -87,7 +87,8 @@ body {
 
 }
 .tab:hover,
-.projects:hover {
+.projects:hover,
+#addProject:hover {
   cursor: pointer;
   background-color: rgba(255,255,255,0.9);
   color: #333;
@@ -105,13 +106,14 @@ body {
   font-weight: 900;
   margin-bottom: 5px;
 }
-.projects {
+.projects, #addProject {
   display: grid;
   align-items: center;
   width: 100%;
   height: 2em;
   font: 1.2rem;
   font-weight: 300;
+  padding: 5px;
 }
 
 #projectInputContainer {
@@ -155,10 +157,11 @@ body {
   grid-template: 1fr / 4fr 1fr;
 }
 .deleteProject {
-  background: inherit;
+  background: none;
   border: none;
 }
 .deleteProject:hover {
+  cursor: pointer;
   background-color: beige;
   color: red;
 }
@@ -204,15 +207,16 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #0c4a6e;
+  background-color: #155e75;
   color: #f0f9ff;
-  width: 45rem;
-  height: 25rem;
+  width: 35rem;
+  height: 20rem;
   border-radius: 5px;
+  box-shadow: 5px 5px 10px #222;
 }
 form {
   display: grid;
-  grid-template: 1.3fr repeat(3, 2fr) 1.5fr / repeat(2, 1fr);
+  grid-template: 1.5fr repeat(3, 2fr) 1.7fr / repeat(2, 1fr);
   width: 100%;
   height: 100%;
 }
@@ -226,7 +230,7 @@ form #formTitle {
   display: grid;
   align-items: center;
   padding-left: 20px;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 700;
   font-family: 'roboto', sans-serif;
 }
@@ -236,7 +240,7 @@ form #formTitle {
   justify-content: right;
   padding-right: 20px;
   font-family: 'roboto', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 700;
 }
 #formTitle #formClose p {
@@ -272,7 +276,7 @@ form #task-priority {
   width: 18%;
   height: 60%;
   border: none;
-  font-size: 1.1rem;
+  font-size: .8rem;
   border-radius: 5px;
   margin: 5px;
   font-weight: 500;
@@ -291,12 +295,12 @@ form #task-priority {
 .taskInput {
   width: 100%;
   height: 100%;
-  padding: 0  20px 0 20px;
+  padding: 0  20px 3px 20px;
   display: grid;
 }
 .taskInput label {
   font-family: 'roboto', sans-serif;
-  font-size: 1.2rem;
+  font-size: .9rem;
   font-weight: 300;
   display: grid;
   align-items: flex-end;
@@ -305,7 +309,7 @@ form #task-priority {
 }
 .input {
   width: 100%;
-  border: 1px solid rgb(196, 194, 194);
+  border: none;
   border-radius: 3px;
   padding: 5px;
   font-size: 1rem;

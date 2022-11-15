@@ -1,7 +1,7 @@
-export const myProjects = (function () {
+const myProjects = (function () {
   const newProject = () => {
     const projects = document.getElementById('projects');
-    
+
     const projectSectionTitle = document.createElement('h3');
     projectSectionTitle.setAttribute('id', 'projectsSectionTitle');
     projectSectionTitle.textContent = 'Projects';
@@ -9,12 +9,11 @@ export const myProjects = (function () {
 
     const defaultProject = document.createElement('div');
     defaultProject.setAttribute('class', 'projects');
-    defaultProject.textContent = "Personal";
+    defaultProject.textContent = 'Personal';
     projects.appendChild(defaultProject);
 
     const addProject = document.createElement('div');
     addProject.setAttribute('id', 'addProject');
-    addProject.setAttribute('class', 'projects');
     addProject.textContent = '+ New Project';
     projects.appendChild(addProject);
 
@@ -29,7 +28,7 @@ export const myProjects = (function () {
       input.setAttribute('type', 'text');
       input.setAttribute('placeholder', 'Project Title');
       input.setAttribute('id', 'newProjectInput');
-      
+
       projectInputContainer.appendChild(input);
 
       const projectInputBtns = document.createElement('div');
@@ -42,7 +41,7 @@ export const myProjects = (function () {
       const cancelBtn = document.createElement('button');
       cancelBtn.setAttribute('id', 'cancelProjectBtn');
 
-      addBtn.textContent = 'Add'
+      addBtn.textContent = 'Add';
       cancelBtn.textContent = 'Cancel';
 
       projectInputBtns.appendChild(addBtn);
@@ -50,7 +49,7 @@ export const myProjects = (function () {
 
       addBtn.addEventListener('click', () => {
         const projectName = input.value;
-        
+
         const addedProjectContainer = document.createElement('div');
         addedProjectContainer.setAttribute('class', 'projectsContainer');
 
@@ -61,10 +60,9 @@ export const myProjects = (function () {
         addedProjectContainer.appendChild(addedProject);
 
         const deleteProject = document.createElement('button');
-        deleteProject.setAttribute('class', 'deleteProject')
+        deleteProject.setAttribute('class', 'deleteProject');
         deleteProject.textContent = 'x';
-        addedProjectContainer.appendChild(deleteProject)
-
+        addedProjectContainer.appendChild(deleteProject);
 
         projects.removeChild(projectInputContainer);
         projects.appendChild(addedProjectContainer);
@@ -72,19 +70,17 @@ export const myProjects = (function () {
 
         deleteProject.addEventListener('click', () => {
           deleteProject.parentElement.remove();
-        })
+        });
+      });
 
-      })
-
-      cancelBtn.addEventListener('click' , () => {
+      cancelBtn.addEventListener('click', () => {
         projects.removeChild(projectInputContainer);
         projects.appendChild(addProject);
-      })
-      
-    })
-    
-  }
+      });
+    });
+  };
 
-  return{newProject}
-  
-})();
+  return { newProject };
+}());
+
+export default myProjects;

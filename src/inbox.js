@@ -1,5 +1,6 @@
-import { inboxTab } from "./tabs";
+import { inboxTab } from './tabs';
 
-export const inboxContent = () => {
+const inboxContent = () => {
   inboxTab.textContent = 'INBOX';
-}
+};
+export default inboxContent;

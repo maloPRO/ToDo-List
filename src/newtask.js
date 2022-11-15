@@ -1,36 +1,35 @@
 const newTask = (function () {
-
-class Task {
-  constructor (title, dueDate, description, category) {
-    this.title = title;
-    this.dueDate = dueDate;
-    this.description = description;
-    this.category = category;
+  class Task {
+    constructor(title, dueDate, description, category) {
+      this.title = title;
+      this.dueDate = dueDate;
+      this.description = description;
+      this.category = category;
+    }
   }
-};
 
-let taskList = [];
+  const taskList = [];
 
-const addTask = () => {
-  let title = document.getElementById('title');
-  let category = document.getElementById('category');
-  let dueDate = document.getElementById('dueDate');
-  let description = document.getElementById('description');
+  const addTask = () => {
+    const title = document.getElementById('title');
+    const category = document.getElementById('category');
+    const dueDate = document.getElementById('dueDate');
+    const description = document.getElementById('description');
 
-  const tasks = new Task(title.value, category.value, dueDate.value, description.value);
+    const tasks = new Task(title.value, category.value, dueDate.value, description.value);
 
-  taskList.push(tasks);
-};
+    taskList.push(tasks);
+  };
 
-const openForm = () => { document.getElementById('formContainer').style.display = 'block';};
-const closeForm = () => { document.getElementById('formContainer').style.display = 'none';};
+  const openForm = () => { document.getElementById('formContainer').style.display = 'block'; };
+  const closeForm = () => { document.getElementById('formContainer').style.display = 'none'; };
 
-document.getElementById('addTask').addEventListener('click', openForm);
-document.getElementById('closeBtn').addEventListener('click', closeForm);
-document.getElementById('submitBtn').addEventListener('click', addTask);
-document.getElementById('formClose').addEventListener('click', closeForm);
+  document.getElementById('addTask').addEventListener('click', openForm);
+  document.getElementById('closeBtn').addEventListener('click', closeForm);
+  document.getElementById('submitBtn').addEventListener('click', addTask);
+  document.getElementById('formClose').addEventListener('click', closeForm);
 
+  return {};
+}());
 
-return {}
-
-})();
+export default newTask;
