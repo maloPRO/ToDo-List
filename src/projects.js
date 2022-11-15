@@ -1,13 +1,7 @@
-import trash from './images/delete.png';  
+import trash from './images/delete.png';
 
 const myProjectsModule = (function () {
   const myProjectsList = [];
-
-  class Project {
-    constructor(title) {
-      this.title = title;
-    }
-  };
 
   const projects = document.querySelector('.projectItems');
 
@@ -16,13 +10,13 @@ const myProjectsModule = (function () {
   personal.setAttribute('class', 'defaultProjects');
   personal.textContent = 'Personal';
   projects.appendChild(personal);
-  myProjectsList.push((new Project(personal.textContent)))
+  myProjectsList.push(personal);
 
   const work = document.createElement('div');
   work.setAttribute('class', 'defaultProjects');
   work.textContent = 'Work';
   projects.appendChild(work);
-  myProjectsList.push((new Project(work.textContent)))
+  myProjectsList.push(work)
 
   // Custom Projects
   const addProjectText = document.createElement('div');
@@ -78,7 +72,7 @@ const myProjectsModule = (function () {
     customProject.setAttribute('class', 'customProjects');
     customProject.textContent =  `${title.charAt(0).toUpperCase()}${title.slice(1).toLowerCase()}`;
     customProjectContainer.appendChild(customProject);
-    myProjectsList.push((new Project(title)));
+    myProjectsList.push(customProject);
 
     const xBtn = document.createElement('div');
     xBtn.setAttribute('class', 'deleteProject');
@@ -91,8 +85,6 @@ const myProjectsModule = (function () {
 
     projects.appendChild(customProjectContainer);
     projects.appendChild(addProjectText);
-
-    console.log(myProjectsList)
 
     document.querySelectorAll('.deleteProject').forEach((deleteButton) => {
       deleteButton.addEventListener('click', () => {
@@ -112,7 +104,10 @@ const myProjectsModule = (function () {
   addProjectText.addEventListener('click', addProjectForm);
   addBtn.addEventListener('click', submitForm);
 
-  return {myProjectsList}
+  return {myProjectsList, submitForm, addBtn}
 })();
 
 export default myProjectsModule;
+
+
+
