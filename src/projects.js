@@ -1,86 +1,118 @@
-const myProjects = (function () {
-  const newProject = () => {
-    const projects = document.getElementById('projects');
+import trash from './images/delete.png';  
 
-    const projectSectionTitle = document.createElement('h3');
-    projectSectionTitle.setAttribute('id', 'projectsSectionTitle');
-    projectSectionTitle.textContent = 'Projects';
-    projects.appendChild(projectSectionTitle);
+const myProjectsModule = (function () {
+  const myProjectsList = [];
 
-    const defaultProject = document.createElement('div');
-    defaultProject.setAttribute('class', 'projects');
-    defaultProject.textContent = 'Personal';
-    projects.appendChild(defaultProject);
-
-    const addProject = document.createElement('div');
-    addProject.setAttribute('id', 'addProject');
-    addProject.textContent = '+ New Project';
-    projects.appendChild(addProject);
-
-    addProject.addEventListener('click', () => {
-      projects.removeChild(addProject);
-
-      const projectInputContainer = document.createElement('div');
-      projectInputContainer.setAttribute('id', 'projectInputContainer');
-      projects.appendChild(projectInputContainer);
-
-      const input = document.createElement('input');
-      input.setAttribute('type', 'text');
-      input.setAttribute('placeholder', 'Project Title');
-      input.setAttribute('id', 'newProjectInput');
-
-      projectInputContainer.appendChild(input);
-
-      const projectInputBtns = document.createElement('div');
-      projectInputBtns.setAttribute('id', 'projectInputBtns');
-      projectInputContainer.appendChild(projectInputBtns);
-
-      const addBtn = document.createElement('button');
-      addBtn.setAttribute('id', 'addProjectBtn');
-
-      const cancelBtn = document.createElement('button');
-      cancelBtn.setAttribute('id', 'cancelProjectBtn');
-
-      addBtn.textContent = 'Add';
-      cancelBtn.textContent = 'Cancel';
-
-      projectInputBtns.appendChild(addBtn);
-      projectInputBtns.appendChild(cancelBtn);
-
-      addBtn.addEventListener('click', () => {
-        const projectName = input.value;
-
-        const addedProjectContainer = document.createElement('div');
-        addedProjectContainer.setAttribute('class', 'projectsContainer');
-
-        const addedProject = document.createElement('div');
-        addedProject.setAttribute('class', 'projects');
-        addedProject.textContent = projectName;
-
-        addedProjectContainer.appendChild(addedProject);
-
-        const deleteProject = document.createElement('button');
-        deleteProject.setAttribute('class', 'deleteProject');
-        deleteProject.textContent = 'x';
-        addedProjectContainer.appendChild(deleteProject);
-
-        projects.removeChild(projectInputContainer);
-        projects.appendChild(addedProjectContainer);
-        projects.appendChild(addProject);
-
-        deleteProject.addEventListener('click', () => {
-          deleteProject.parentElement.remove();
-        });
-      });
-
-      cancelBtn.addEventListener('click', () => {
-        projects.removeChild(projectInputContainer);
-        projects.appendChild(addProject);
-      });
-    });
+  class Project {
+    constructor(title) {
+      this.title = title;
+    }
   };
 
-  return { newProject };
-}());
+  const projects = document.querySelector('.projectItems');
 
-export default myProjects;
+  // Default Projects
+  const personal = document.createElement('div');
+  personal.setAttribute('class', 'defaultProjects');
+  personal.textContent = 'Personal';
+  projects.appendChild(personal);
+  myProjectsList.push((new Project(personal.textContent)))
+
+  const work = document.createElement('div');
+  work.setAttribute('class', 'defaultProjects');
+  work.textContent = 'Work';
+  projects.appendChild(work);
+  myProjectsList.push((new Project(work.textContent)))
+
+  // Custom Projects
+  const addProjectText = document.createElement('div');
+
+  const createAddProjectButton = () => {
+    addProjectText.setAttribute('id', 'addProjectText');
+    addProjectText.textContent = '+ Add Project';
+    projects.appendChild(addProjectText);
+
+  };
+
+  createAddProjectButton();
+
+  const input = document.createElement('input');
+
+  const addBtn = document.createElement('button');
+  addBtn.textContent = 'Add';
+  addBtn.setAttribute('class', 'projectFormBtns');
+  addBtn.setAttribute('id', 'addProjectBtn');
+
+  const cancelBtn = document.createElement('button');
+  cancelBtn.textContent = 'Cancel';
+  cancelBtn.setAttribute('class', 'projectFormBtns');
+  cancelBtn.setAttribute('id', 'cancelProjectBtn');
+
+  const newProjectForm = document.createElement('div');
+
+  const addProjectForm = () => {
+    projects.removeChild(addProjectText);
+
+    newProjectForm.setAttribute('id', 'newProjectForm');
+    projects.appendChild(newProjectForm);
+
+    input.setAttribute('id', 'newProjectFormInput');
+    input.setAttribute('placeholder', 'Project Title');
+    input.setAttribute('required', true)
+    newProjectForm.appendChild(input);
+
+    newProjectForm.appendChild(addBtn);
+    newProjectForm.appendChild(cancelBtn);
+    
+  };
+
+  const submitForm = () => {
+    projects.removeChild(newProjectForm);
+    
+    const title = input.value;
+
+    const customProjectContainer = document.createElement('div');
+    customProjectContainer.setAttribute('class', 'customProjectsContainer');
+
+    const customProject = document.createElement('div');
+    customProject.setAttribute('class', 'customProjects');
+    customProject.textContent =  `${title.charAt(0).toUpperCase()}${title.slice(1).toLowerCase()}`;
+    customProjectContainer.appendChild(customProject);
+    myProjectsList.push((new Project(title)));
+
+    const xBtn = document.createElement('div');
+    xBtn.setAttribute('class', 'deleteProject');
+
+    const trashIcon = new Image();
+    trashIcon.src = trash;
+    trashIcon.setAttribute('id', 'trash')
+    xBtn.appendChild(trashIcon);
+    customProjectContainer.appendChild(xBtn);
+
+    projects.appendChild(customProjectContainer);
+    projects.appendChild(addProjectText);
+
+    console.log(myProjectsList)
+
+    document.querySelectorAll('.deleteProject').forEach((deleteButton) => {
+      deleteButton.addEventListener('click', () => {
+        deleteButton.parentElement.remove();
+      })
+    })
+    input.value = ''; 
+  };
+
+  const cancelForm = () => {
+    
+    projects.removeChild(newProjectForm);
+    projects.appendChild(addProjectText);
+  };
+
+  cancelBtn.addEventListener('click', cancelForm);
+  addProjectText.addEventListener('click', addProjectForm);
+  addBtn.addEventListener('click', submitForm);
+
+  return {myProjectsList}
+})();
+
+export default myProjectsModule;

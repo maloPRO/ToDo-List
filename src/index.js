@@ -5,9 +5,9 @@ import css from './main.css';
 // eslint-disable-next-line no-unused-vars
 import newTask from './newtask';
 import todaysTasks from './today';
-import myProjects from './projects';
+// eslint-disable-next-line no-unused-vars
+import myProjectsModule from './projects';
 
 inboxContent();
 tabSelection();
 todaysTasks.todayContent();
-myProjects.newProject();

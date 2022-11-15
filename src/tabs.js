@@ -1,3 +1,4 @@
+
 export const section = document.querySelector('.section');
 export const tabs = document.querySelectorAll('.tab');
 export const inboxTab = document.createElement('div');
@@ -37,3 +38,4 @@ export const tabSelection = () => {
     });
   });
 };
+

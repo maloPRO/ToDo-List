@@ -1,3 +1,4 @@
+// eslint-disable-next-line func-names
 const newTask = (function () {
   class Task {
     constructor(title, dueDate, description, category) {
