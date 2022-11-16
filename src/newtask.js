@@ -1,5 +1,5 @@
 // eslint-disable-next-line func-names
-const newTask = (function () {
+const newTaskModule = (function () {
   class Task {
     constructor(title, dueDate, description, category) {
       this.title = title;
@@ -33,4 +33,4 @@ const newTask = (function () {
   return {};
 }());
 
-export default newTask;
+export default newTaskModule;

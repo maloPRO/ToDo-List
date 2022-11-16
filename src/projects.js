@@ -7,13 +7,13 @@ const myProjectsModule = (function () {
 
   // Default Projects
   const personal = document.createElement('div');
-  personal.setAttribute('class', 'defaultProjects');
+  personal.setAttribute('class', 'projects');
   personal.textContent = 'Personal';
   projects.appendChild(personal);
   myProjectsList.push(personal);
 
   const work = document.createElement('div');
-  work.setAttribute('class', 'defaultProjects');
+  work.setAttribute('class', 'projects');
   work.textContent = 'Work';
   projects.appendChild(work);
   myProjectsList.push(work)
@@ -69,7 +69,7 @@ const myProjectsModule = (function () {
     customProjectContainer.setAttribute('class', 'customProjectsContainer');
 
     const customProject = document.createElement('div');
-    customProject.setAttribute('class', 'customProjects');
+    customProject.setAttribute('class', 'projects');
     customProject.textContent =  `${title.charAt(0).toUpperCase()}${title.slice(1).toLowerCase()}`;
     customProjectContainer.appendChild(customProject);
     myProjectsList.push(customProject);
@@ -93,8 +93,8 @@ const myProjectsModule = (function () {
       
     })
     input.value = ''; 
+    
   };
-
   const cancelForm = () => {
     
     projects.removeChild(newProjectForm);
@@ -105,10 +105,12 @@ const myProjectsModule = (function () {
   addProjectText.addEventListener('click', addProjectForm);
   addBtn.addEventListener('click', submitForm);
 
-  return {myProjectsList, submitForm, addBtn}
+  return {myProjectsList, submitForm, addBtn }
 })();
 
 export default myProjectsModule;
+
+
 
 
 

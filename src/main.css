@@ -99,7 +99,7 @@ body {
   color: #333;
 }
 .tab:hover,
-.defaultProjects:hover {
+.projects:hover {
   cursor: pointer;
   background-color: rgba(255,255,255,0.9);
   color: #333;
@@ -114,12 +114,12 @@ body {
   font-weight: 900;
   padding: 0 20px 5px 20px;
 }
-.defaultProjects {
+.projects {
   grid-template: 1fr /.15fr 1fr;
   display: grid;
   align-items: center;
   justify-content: center;
-  padding: 7px 20px 7px 30px;
+  padding: 5px 20px 5px 30px;
   font-family: 'Lato', sans-serif;
   font-size: 1.2rem;
   font-weight: 400;
@@ -175,7 +175,6 @@ body {
   display: grid;
   align-items: center;
   justify-content: center;
-  padding: 7px 20px 7px 30px;
   font-size: 1.2rem;
   font-weight: 400;
   color: #555;

@@ -1,4 +1,4 @@
-import { upcomingTab } from './tabs';
+import tabSelectionModule from './tabs';
 import Icon from './images/calenderIcon.png';
 
 
@@ -16,7 +16,7 @@ const upcomingTabModule = (function () {
   upcomingTabTitle.textContent = 'Upcoming Tasks';
   upcomingTabHeader.appendChild(upcomingTabTitle);
 
-  upcomingTab.appendChild(upcomingTabHeader);
+  tabSelectionModule.upcomingTab.appendChild(upcomingTabHeader);
 
 })();
 

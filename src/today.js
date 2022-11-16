@@ -1,5 +1,4 @@
-import { format } from 'date-fns';
-import { todayTab } from './tabs';
+import tabSelectionModule from './tabs';
 import Icon from './images/day.png';
 
 const todaysTasksModule = (function () {
@@ -17,7 +16,7 @@ const todaysTasksModule = (function () {
   todayTasksTitle.textContent = 'Today\'s Tasks';
   todayTasksHeader.appendChild(todayTasksTitle);
 
-  todayTab.appendChild(todayTasksHeader)
+  tabSelectionModule.todayTab.appendChild(todayTasksHeader)
 
 
   return { };

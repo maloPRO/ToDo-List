@@ -1,4 +1,4 @@
-import { allTasksTab } from './tabs';
+import tabSelectionModule from './tabs';
 import Icon from './images/inboxIcon.png';
 
 const allTasksModule = (function () {
@@ -15,7 +15,7 @@ const allTasksModule = (function () {
   allTasksTitle.textContent = 'All Tasks';
   allTasksHeader.appendChild(allTasksTitle);
 
-  allTasksTab.appendChild(allTasksHeader)
+  tabSelectionModule.allTasksTab.appendChild(allTasksHeader)
     
 })();
 
