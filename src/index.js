@@ -14,3 +14,5 @@ import upcomingTabModule from './upcoming';
 
 
 tabSelectionModule.tabSelection();
+tabSelectionModule.customProjects();
+

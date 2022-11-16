@@ -7,13 +7,13 @@ const myProjectsModule = (function () {
 
   // Default Projects
   const personal = document.createElement('div');
-  personal.setAttribute('class', 'projects');
+  personal.setAttribute('class', 'defaultProjects');
   personal.textContent = 'Personal';
   projects.appendChild(personal);
   myProjectsList.push(personal);
 
   const work = document.createElement('div');
-  work.setAttribute('class', 'projects');
+  work.setAttribute('class', 'defaultProjects');
   work.textContent = 'Work';
   projects.appendChild(work);
   myProjectsList.push(work)
@@ -93,7 +93,6 @@ const myProjectsModule = (function () {
       
     })
     input.value = ''; 
-    
   };
   const cancelForm = () => {
     

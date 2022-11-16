@@ -1,3 +1,4 @@
+import myProjectsModule from './projects';
 
 const tabSelectionModule = (function () {
 
@@ -40,7 +41,20 @@ const tabSelectionModule = (function () {
       });
     });
 
-    const defaultProjects = document.querySelectorAll('.projects');
+    const btn = myProjectsModule.addBtn;
+
+    btn.addEventListener('click', () => {
+      const list = document.querySelectorAll('.projects');
+
+      list.forEach((item) => {
+        item.addEventListener('click', () => {
+          
+        })
+      })
+
+    })
+
+    const defaultProjects = document.querySelectorAll('.defaultProjects');
     defaultProjects.forEach((project) => {
       project.addEventListener('click', () => {
 
@@ -64,10 +78,41 @@ const tabSelectionModule = (function () {
     }) 
   };
 
-  return { todayTab, upcomingTab, allTasksTab, tabSelection}
+  const btn = myProjectsModule.addBtn;
+
+  const customProjects = () => {
+    btn.addEventListener('click', () => {
+      const list = document.querySelectorAll('.projects');
+  
+      list.forEach((item) => {
+        item.addEventListener('click', () => {
+          removeAllChildNodes(section);
+  
+          const newTab = document.createElement('div');
+          newTab.setAttribute('class', 'customTabs');
+          newTab.setAttribute('id', `${item.textContent}Tab`)
+  
+          const newTabHeader = document.createElement('div');
+          newTabHeader.setAttribute('class', 'sectionHeader');
+  
+          const newTabTitle = document.createElement('div');
+          newTabTitle.textContent = `${item.textContent} Tasks`;
+          newTabHeader.appendChild(newTabTitle);
+  
+          newTab.appendChild(newTabHeader);
+  
+          section.appendChild(newTab);
+        })
+      })
+  
+    });
+  }
+
+  return { todayTab, upcomingTab, allTasksTab, tabSelection, customProjects}
 
 })();
 
 export default tabSelectionModule;
+
 
 
