@@ -15,4 +15,10 @@ import upcomingTabModule from './upcoming';
 
 tabSelectionModule.tabSelection();
 tabSelectionModule.customProjects();
+tabSelectionModule.defaults();
 
+const btn = tabSelectionModule.addNewTask;
+
+const open = () => newTaskModule.openForm();
+
+btn.addEventListener('click', open)

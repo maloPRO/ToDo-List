@@ -1,5 +1,8 @@
-// eslint-disable-next-line func-names
+import tabSelectionModule from './tabs';
+
+
 const newTaskModule = (function () {
+  const taskList = [];
   class Task {
     constructor(title, dueDate, description, category) {
       this.title = title;
@@ -8,8 +11,6 @@ const newTaskModule = (function () {
       this.category = category;
     }
   }
-
-  const taskList = [];
 
   const addTask = () => {
     const title = document.getElementById('title');
@@ -25,12 +26,11 @@ const newTaskModule = (function () {
   const openForm = () => { document.getElementById('formContainer').style.display = 'block'; };
   const closeForm = () => { document.getElementById('formContainer').style.display = 'none'; };
 
-  document.getElementById('addTask').addEventListener('click', openForm);
   document.getElementById('closeBtn').addEventListener('click', closeForm);
   document.getElementById('submitBtn').addEventListener('click', addTask);
   document.getElementById('formClose').addEventListener('click', closeForm);
 
-  return {};
+  return {openForm};
 }());
 
 export default newTaskModule;

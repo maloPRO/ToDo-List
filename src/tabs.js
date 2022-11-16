@@ -1,21 +1,29 @@
 import myProjectsModule from './projects';
 
+// eslint-disable-next-line func-names
 const tabSelectionModule = (function () {
 
   const section = document.querySelector('.section');
   const tabs = document.querySelectorAll('.tab');
+
   const allTasksTab = document.createElement('div');
+  allTasksTab.setAttribute('class', 'upperTabs');
+  allTasksTab.setAttribute('id', 'allTasksTab');
+
   const todayTab = document.createElement('div');
+  todayTab.setAttribute('class', 'upperTabs');
+  todayTab.setAttribute('id', 'todayTabs');
+  
   const upcomingTab = document.createElement('div');
-  const filtersTab = document.createElement('div');
-  const workTab = document.createElement('div');
-  const personalTab = document.createElement('div');
+  upcomingTab.setAttribute('class', 'upperTabs');
+  todayTab.setAttribute('id', 'upcomingTabs');
 
   function removeAllChildNodes(parent) {
     while (parent.firstChild) {
       parent.removeChild(parent.firstChild);
-    }
+    };
   }
+
   const tabSelection = () => {
     tabs.forEach((tab) => {
       tab.addEventListener('click', () => {
@@ -28,32 +36,13 @@ const tabSelectionModule = (function () {
         } else if (tab.id === 'upcoming') {
           removeAllChildNodes(section);
           section.appendChild(upcomingTab);
-        } else if (tab.id === 'filters') {
-          removeAllChildNodes(section);
-          section.appendChild(filtersTab);
-        } else if (tab.id === 'personal') {
-          removeAllChildNodes(section);
-          section.appendChild(personalTab);
-        } else if (tab.id === 'work') {
-          removeAllChildNodes(section);
-          section.appendChild(workTab);
         }
       });
     });
+  };
+  const addNewTask = document.createElement('div');
 
-    const btn = myProjectsModule.addBtn;
-
-    btn.addEventListener('click', () => {
-      const list = document.querySelectorAll('.projects');
-
-      list.forEach((item) => {
-        item.addEventListener('click', () => {
-          
-        })
-      })
-
-    })
-
+  const defaults = () => {
     const defaultProjects = document.querySelectorAll('.defaultProjects');
     defaultProjects.forEach((project) => {
       project.addEventListener('click', () => {
@@ -73,11 +62,18 @@ const tabSelectionModule = (function () {
 
         newTab.appendChild(newTabHeader);
 
+        const addTaskSection = document.createElement('div');
+        addTaskSection.setAttribute('class', 'addTaskSection');
+        newTab.appendChild(addTaskSection);
+
+        addNewTask.setAttribute('class', 'addNewTask');
+        addNewTask.textContent = '+ New Project';
+        addTaskSection.appendChild(addNewTask);
+
         section.appendChild(newTab);
       })
     }) 
-  };
-
+  }
   const btn = myProjectsModule.addBtn;
 
   const customProjects = () => {
@@ -87,7 +83,7 @@ const tabSelectionModule = (function () {
       list.forEach((item) => {
         item.addEventListener('click', () => {
           removeAllChildNodes(section);
-  
+          
           const newTab = document.createElement('div');
           newTab.setAttribute('class', 'customTabs');
           newTab.setAttribute('id', `${item.textContent}Tab`)
@@ -98,8 +94,17 @@ const tabSelectionModule = (function () {
           const newTabTitle = document.createElement('div');
           newTabTitle.textContent = `${item.textContent} Tasks`;
           newTabHeader.appendChild(newTabTitle);
-  
+
           newTab.appendChild(newTabHeader);
+
+          const addTaskSection = document.createElement('div');
+          addTaskSection.setAttribute('class', 'addTaskSection');
+          newTab.appendChild(addTaskSection);
+
+          
+          addNewTask.setAttribute('class', 'addNewTask');
+          addNewTask.textContent = '+ New Project';
+          addTaskSection.appendChild(addNewTask);
   
           section.appendChild(newTab);
         })
@@ -108,11 +113,13 @@ const tabSelectionModule = (function () {
     });
   }
 
-  return { todayTab, upcomingTab, allTasksTab, tabSelection, customProjects}
+  return { todayTab, upcomingTab, allTasksTab, tabSelection, customProjects, defaults, addNewTask}
 
 })();
 
 export default tabSelectionModule;
+
+
 
 
 
