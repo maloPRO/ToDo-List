@@ -90,6 +90,7 @@ const myProjectsModule = (function () {
       deleteButton.addEventListener('click', () => {
         deleteButton.parentElement.remove();
       })
+      
     })
     input.value = ''; 
   };

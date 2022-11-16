@@ -1,12 +1,12 @@
 import { tabSelection } from './tabs';
-import inboxContent from './inbox';
 // eslint-disable-next-line no-unused-vars
 import css from './main.css';
 // eslint-disable-next-line no-unused-vars
 import newTask from './newtask';
-import todaysTasks from './today';
 import myProjectsModule from './projects';
 
-inboxContent();
+import allTasksModule from './all-tasks';
+import todaysTasksModule from './today';
+import upcomingTabModule from './upcoming';
+
 tabSelection();
-todaysTasks.todayContent();

@@ -1,29 +1,26 @@
 import { format } from 'date-fns';
 import { todayTab } from './tabs';
+import Icon from './images/day.png';
 
-const todaysTasks = (function () {
-  const todayContent = () => {
-    const container = document.createElement('div');
-    todayTab.setAttribute('id', 'todayTab');
-    todayTab.appendChild(container);
+const todaysTasksModule = (function () {
 
-    const todayTabNav = document.createElement('div');
-    todayTabNav.setAttribute('id', 'todayTabNav');
-    todayTab.appendChild(todayTabNav);
+  const todayTasksHeader = document.createElement('div');
+  todayTasksHeader.setAttribute('id', 'todayTasksHeader');
+  todayTasksHeader.setAttribute('class', 'sectionHeader');
 
-    const today = document.createElement('div');
-    today.setAttribute('class', 'dayHeadings');
-    today.textContent = 'Today';
-    todayTabNav.appendChild(today);
+  const todayIcon = new Image()
+  todayIcon.src = Icon;
+  todayIcon.setAttribute('class', 'tabIcons' );
+  todayTasksHeader.appendChild(todayIcon);
 
-    const date = format(new Date(), 'E MMM dd');
-    const todaysDate = document.createElement('div');
-    todaysDate.setAttribute('class', 'dates');
-    todayTabNav.appendChild(todaysDate);
-    todaysDate.textContent = `${date}`;
-  };
+  const todayTasksTitle = document.createElement('div');
+  todayTasksTitle.textContent = 'Today\'s Tasks';
+  todayTasksHeader.appendChild(todayTasksTitle);
 
-  return { todayContent };
+  todayTab.appendChild(todayTasksHeader)
+
+
+  return { };
 }());
 
-export default todaysTasks;
+export default todaysTasksModule;

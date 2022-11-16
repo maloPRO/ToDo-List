@@ -2,14 +2,14 @@
 
 export const section = document.querySelector('.section');
 export const tabs = document.querySelectorAll('.tab');
-export const inboxTab = document.createElement('div');
+export const allTasksTab = document.createElement('div');
 export const todayTab = document.createElement('div');
 export const upcomingTab = document.createElement('div');
 export const filtersTab = document.createElement('div');
 export const workTab = document.createElement('div');
 export const personalTab = document.createElement('div');
 
-function removeAllChildNodes(parent) {
+export function removeAllChildNodes(parent) {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
   }
@@ -17,9 +17,9 @@ function removeAllChildNodes(parent) {
 export const tabSelection = () => {
   tabs.forEach((tab) => {
     tab.addEventListener('click', () => {
-      if (tab.id === 'inbox') {
+      if (tab.id === 'allTasks') {
         removeAllChildNodes(section);
-        section.appendChild(inboxTab);
+        section.appendChild(allTasksTab);
       } else if (tab.id === 'day') {
         removeAllChildNodes(section);
         section.appendChild(todayTab);
