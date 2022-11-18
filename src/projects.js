@@ -52,7 +52,6 @@ const myProjectsModule = (function () {
 
     input.setAttribute('id', 'newProjectFormInput');
     input.setAttribute('placeholder', 'Project Title');
-    input.setAttribute('required', true)
     newProjectForm.appendChild(input);
 
     newProjectForm.appendChild(addBtn);

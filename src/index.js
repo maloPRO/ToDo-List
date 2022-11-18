@@ -1,13 +1,27 @@
+import format from 'date-fns/format';
 import tabSelectionModule from './tabs';
 // eslint-disable-next-line no-unused-vars
 import css from './main.css';
+import trash from './images/delete.png';
 
 tabSelectionModule.tabSelection();
 tabSelectionModule.customProjects();
 tabSelectionModule.defaults();
 
+const form = document.getElementById('form');
+
+
+function handleForm(event) {
+  event.preventDefault();
+}
+
 const newTaskModule = (function () {
   const taskList = [];
+  const title = document.getElementById('title');
+  const category = document.getElementById('project');
+  const dueDate = document.getElementById('dueDate');
+  const description = document.getElementById('description');
+  
   class Task {
     constructor(title, dueDate, description, category) {
       this.title = title;
@@ -18,25 +32,60 @@ const newTaskModule = (function () {
   }
 
   const addTask = () => {
-    const title = document.getElementById('title');
-    const category = document.getElementById('category');
-    const dueDate = document.getElementById('dueDate');
-    const description = document.getElementById('description');
+
 
     const tasks = new Task(title.value, category.value, dueDate.value, description.value);
 
-    taskList.push(tasks);
   };
 
   const openForm = () => { document.getElementById('formContainer').style.display = 'block'; };
   const closeForm = () => { document.getElementById('formContainer').style.display = 'none'; };
 
+  const submitForm = () => {
+
+    const addTaskButton = tabSelectionModule.addNewTask;
+    const taskSection = addTaskButton.parentElement;
+    const taskContainer = document.createElement('div');
+    taskContainer.setAttribute('class', 'taskContainer');
+ 
+    taskSection.appendChild(taskContainer);
+
+    const checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    taskContainer.appendChild(checkbox);
+    checkbox.setAttribute('class', 'checkbox')
+
+    const titleUpcase = title.value;
+    const taskTitle = document.createElement('div');
+    taskTitle.textContent = `${titleUpcase.charAt(0).toUpperCase()}${titleUpcase.slice(1).toLowerCase()}`
+    taskContainer.appendChild(taskTitle);
+    taskTitle.setAttribute('class', 'taskTitle')
+
+    const taskDate = document.createElement('div');
+    taskDate.textContent = dueDate.value;
+    taskContainer.appendChild(taskDate);
+    taskDate.setAttribute('class', 'taskDate');
+
+    const trashIcon = new Image();
+    trashIcon.src = trash;
+    trashIcon.setAttribute('class', 'trashTask')
+    taskContainer.appendChild(trashIcon);
+  }
+
+  const clearForm = () => {
+    form.reset();
+  }
+
+  form.addEventListener('submit', handleForm);
+  document.getElementById('submitBtn').addEventListener('click', submitForm);
+  document.getElementById('submitBtn').addEventListener('click', closeForm);
+  document.getElementById('submitBtn').addEventListener('click', clearForm);
   document.getElementById('closeBtn').addEventListener('click', closeForm);
   document.getElementById('submitBtn').addEventListener('click', addTask);
   document.getElementById('formClose').addEventListener('click', closeForm);
 
   return {openForm};
-}());
+})();
 
 const btn = tabSelectionModule.addNewTask;
 

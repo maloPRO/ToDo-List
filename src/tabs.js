@@ -70,7 +70,7 @@ const tabSelectionModule = (function () {
         newTab.appendChild(addTaskSection);
 
         addNewTask.setAttribute('class', 'addNewTask');
-        addNewTask.textContent = '+ New Project';
+        addNewTask.textContent = '+ Add Task';
         addTaskSection.appendChild(addNewTask);
 
         section.appendChild(newTab);
