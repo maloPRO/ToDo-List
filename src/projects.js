@@ -88,8 +88,7 @@ const myProjectsModule = (function () {
     document.querySelectorAll('.deleteProject').forEach((deleteButton) => {
       deleteButton.addEventListener('click', () => {
         deleteButton.parentElement.remove();
-      })
-      
+      }) 
     })
     input.value = ''; 
   };

@@ -81,6 +81,7 @@ const tabSelectionModule = (function () {
 
   const customProjects = () => {
     btn.addEventListener('click', () => {
+      
       const list = document.querySelectorAll('.projects');
   
       list.forEach((item) => {
@@ -106,7 +107,7 @@ const tabSelectionModule = (function () {
 
           
           addNewTask.setAttribute('class', 'addNewTask');
-          addNewTask.textContent = '+ New Project';
+          addNewTask.textContent = '+ New Task';
           addTaskSection.appendChild(addNewTask);
   
           section.appendChild(newTab);

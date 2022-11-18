@@ -243,6 +243,10 @@ body {
 .trashTask {
   width: 1rem;
 }
+.trashTask:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
 .taskTitle {
   font-size: 1rem;
 }
