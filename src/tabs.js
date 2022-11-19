@@ -107,10 +107,11 @@ const tabSelectionModule = (function () {
 
           
           addNewTask.setAttribute('class', 'addNewTask');
-          addNewTask.textContent = '+ New Task';
+          addNewTask.textContent = '+ Add Task';
           addTaskSection.appendChild(addNewTask);
   
           section.appendChild(newTab);
+
         })
       })
   
