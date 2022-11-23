@@ -1,4 +1,3 @@
-import format from 'date-fns/format';
 import tabSelectionModule from './tabs';
 // eslint-disable-next-line no-unused-vars
 import css from './main.css';
@@ -10,20 +9,27 @@ tabSelectionModule.defaults();
 
 const form = document.getElementById('form');
 
-
-function handleForm(event) {
-  event.preventDefault();
-}
+const openForm = () => { document.getElementById('formContainer').style.display = 'block'; };
+const closeForm = () => { document.getElementById('formContainer').style.display = 'none'; };
 
 const newTaskModule = (function () {
 
-  const title = document.getElementById('title');
-  const dueDate = document.getElementById('dueDate');
-  
-  const openForm = () => { document.getElementById('formContainer').style.display = 'block'; };
-  const closeForm = () => { document.getElementById('formContainer').style.display = 'none'; };
+  const myTasks = [];
 
-  const submitForm = () => {
+  class Task {
+    constructor(title, dueDate) {
+      this.title = title;
+      this.dueDate = dueDate;
+    }
+  }
+
+  const titleInput = document.getElementById('title');
+  const dueDateInput = document.getElementById('dueDate');
+
+  const createTask = () => {
+
+    const task = new Task(titleInput.value, dueDateInput.value);
+    myTasks.push(task)
 
     const addTaskButton = tabSelectionModule.addNewTask;
     const taskSection = addTaskButton.parentElement;
@@ -37,14 +43,14 @@ const newTaskModule = (function () {
     taskContainer.appendChild(checkbox);
     checkbox.setAttribute('class', 'checkbox')
 
-    const titleUpcase = title.value;
+    const titleUpcase = task.title;
     const taskTitle = document.createElement('div');
     taskTitle.textContent = `${titleUpcase.charAt(0).toUpperCase()}${titleUpcase.slice(1).toLowerCase()}`
     taskContainer.appendChild(taskTitle);
     taskTitle.setAttribute('class', 'taskTitle')
 
     const taskDate = document.createElement('div');
-    taskDate.textContent = dueDate.value;
+    taskDate.textContent = task.dueDate;
     taskContainer.appendChild(taskDate);
     taskDate.setAttribute('class', 'taskDate');
 
@@ -60,16 +66,17 @@ const newTaskModule = (function () {
       
     })
   }
-  
 
-  const clearForm = () => {
-    form.reset();
+  function handleForm(event) { 
+    
+    event.preventDefault();
+    createTask()
+    console.log(myTasks)
+    
   }
 
+
   form.addEventListener('submit', handleForm);
-  document.getElementById('submitBtn').addEventListener('click', submitForm);
-  document.getElementById('submitBtn').addEventListener('click', closeForm);
-  document.getElementById('submitBtn').addEventListener('click', clearForm);
   document.getElementById('closeBtn').addEventListener('click', closeForm);
   document.getElementById('formClose').addEventListener('click', closeForm);
 
