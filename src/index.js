@@ -1,4 +1,3 @@
-import format from 'date-fns/format';
 import tabSelectionModule from './tabs';
 // eslint-disable-next-line no-unused-vars
 import css from './main.css';
@@ -76,9 +75,6 @@ const newTaskModule = (function () {
     
   }
 
-  const clearForm = () => {
-    form.reset();
-  }
 
   form.addEventListener('submit', handleForm);
   document.getElementById('closeBtn').addEventListener('click', closeForm);
