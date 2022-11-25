@@ -1,4 +1,4 @@
-import myProjectsModule from './projects';
+
 import tasksIcon from './images/inboxIcon.png';
 import iconToday from './images/day.png';
 import iconUpcoming from './images/calenderIcon.png';
@@ -43,82 +43,8 @@ const tabSelectionModule = (function () {
       });
     });
   };
-  const addNewTask = document.createElement('div');
-
-  const defaults = () => {
-    const defaultProjects = document.querySelectorAll('.defaultProjects');
-    defaultProjects.forEach((project) => {
-      project.addEventListener('click', () => {
-
-        removeAllChildNodes(section);
-
-        const newTab = document.createElement('div');
-        newTab.setAttribute('class', 'customTabs');
-        newTab.setAttribute('id', `${project.textContent}Tab`)
-
-        const newTabHeader = document.createElement('div');
-        newTabHeader.setAttribute('class', 'sectionHeader');
-
-        const newTabTitle = document.createElement('div');
-        newTabTitle.textContent = `${project.textContent} Tasks`;
-        newTabHeader.appendChild(newTabTitle);
-
-        newTab.appendChild(newTabHeader);
-
-        const addTaskSection = document.createElement('div');
-        addTaskSection.setAttribute('class', 'addTaskSection');
-        newTab.appendChild(addTaskSection);
-
-        addNewTask.setAttribute('class', 'addNewTask');
-        addNewTask.textContent = '+ Add Task';
-        addTaskSection.appendChild(addNewTask);
-
-        section.appendChild(newTab);
-      })
-    }) 
-  }
-  const btn = myProjectsModule.addBtn;
-
-  const customProjects = () => {
-    btn.addEventListener('click', () => {
-      
-      const list = document.querySelectorAll('.projects');
-  
-      list.forEach((item) => {
-        item.addEventListener('click', () => {
-          removeAllChildNodes(section);
-          
-          const newTab = document.createElement('div');
-          newTab.setAttribute('class', 'customTabs');
-          newTab.setAttribute('id', `${item.textContent}Tab`)
-  
-          const newTabHeader = document.createElement('div');
-          newTabHeader.setAttribute('class', 'sectionHeader');
-  
-          const newTabTitle = document.createElement('div');
-          newTabTitle.textContent = `${item.textContent} Tasks`;
-          newTabHeader.appendChild(newTabTitle);
-
-          newTab.appendChild(newTabHeader);
-
-          const addTaskSection = document.createElement('div');
-          addTaskSection.setAttribute('class', 'addTaskSection');
-          newTab.appendChild(addTaskSection);
-
-          
-          addNewTask.setAttribute('class', 'addNewTask');
-          addNewTask.textContent = '+ Add Task';
-          addTaskSection.appendChild(addNewTask);
-  
-          section.appendChild(newTab);
-
-        })
-      })
-  
-    });
-  }
-
-  return { todayTab, upcomingTab, allTasksTab, tabSelection, customProjects, defaults, addNewTask}
+  const addNewTask = document.createElement('div');  
+  return { todayTab, upcomingTab, allTasksTab, tabSelection, addNewTask}
 
 })();
 

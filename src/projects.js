@@ -1,113 +1,96 @@
-import trash from './images/delete.png';
+import trash from './images/trash.png';
 
-const myProjectsModule = (function () {
-  const myProjectsList = [];
+const myProjectsModule = (function() {
 
-  const projects = document.querySelector('.projectItems');
-
-  // Default Projects
-  const personal = document.createElement('div');
-  personal.setAttribute('class', 'defaultProjects');
-  personal.textContent = 'Personal';
-  projects.appendChild(personal);
-  myProjectsList.push(personal);
-
-  const work = document.createElement('div');
-  work.setAttribute('class', 'defaultProjects');
-  work.textContent = 'Work';
-  projects.appendChild(work);
-  myProjectsList.push(work)
-
-  // Custom Projects
-  const addProjectText = document.createElement('div');
-
-  const createAddProjectButton = () => {
-    addProjectText.setAttribute('id', 'addProjectText');
-    addProjectText.textContent = '+ Add Project';
-    projects.appendChild(addProjectText);
-
-  };
-
-  createAddProjectButton();
-
+  const myProjectsList = JSON.parse(localStorage.getItem('projects')) || [];
+  const projectList = document.querySelector('.projectList');
+  
+  // Add project form elements 
+  const form = document.createElement('form');
   const input = document.createElement('input');
-
+  const addProjectBtn = document.createElement('button');
+  const addProjectDiv = document.createElement('div');
   const addBtn = document.createElement('button');
-  addBtn.textContent = 'Add';
-  addBtn.setAttribute('class', 'projectFormBtns');
-  addBtn.setAttribute('id', 'addProjectBtn');
-
   const cancelBtn = document.createElement('button');
+
+  addProjectDiv.setAttribute('class', 'addProjectDiv');
+  form.setAttribute('class', 'projectForm');
+  input.setAttribute('required', true);
+  input.setAttribute('placeholder', 'Project Title');
+
+  addProjectBtn.textContent = '+ New Project';
+  addBtn.textContent = 'Add';
   cancelBtn.textContent = 'Cancel';
-  cancelBtn.setAttribute('class', 'projectFormBtns');
-  cancelBtn.setAttribute('id', 'cancelProjectBtn');
+  addBtn.setAttribute('type', 'submit');
+  cancelBtn.setAttribute('type', 'button');
 
-  const newProjectForm = document.createElement('div');
+  addProjectDiv.appendChild(addProjectBtn);
+  projectList.appendChild(addProjectDiv);
 
-  const addProjectForm = () => {
-    projects.removeChild(addProjectText);
+  class Project {
+    constructor(title) {
+      this.title = title;
+    }
+  }
+  const newProject = () => {
+    const project = new Project(input.value);
+    myProjectsList.push(project);
+    localStorage.setItem('projects', JSON.stringify(myProjectsList));
 
-    newProjectForm.setAttribute('id', 'newProjectForm');
-    projects.appendChild(newProjectForm);
+  }
+  const displayForm = () => {
+    projectList.removeChild(addProjectDiv);
+    projectList.appendChild(form)
+    form.append(input, addBtn, cancelBtn);
+  }
+  const closeForm = () => {
+    projectList.removeChild(form);
+    projectList.appendChild(addProjectDiv);
+  }
+  const displayProject = ({title}) => {
+    const projectDiv = document.createElement('div');
+    projectDiv.setAttribute('class', 'projects');
 
-    input.setAttribute('id', 'newProjectFormInput');
-    input.setAttribute('placeholder', 'Project Title');
-    newProjectForm.appendChild(input);
+    const projectName = document.createElement('p');
+    projectName.setAttribute('class', 'projectName');
+    projectName.textContent = title;
 
-    newProjectForm.appendChild(addBtn);
-    newProjectForm.appendChild(cancelBtn);
-    
-  };
-
-  const submitForm = () => {
-    projects.removeChild(newProjectForm);
-    
-    const title = input.value;
-
-    const customProjectContainer = document.createElement('div');
-    customProjectContainer.setAttribute('class', 'customProjectsContainer');
-
-    const customProject = document.createElement('div');
-    customProject.setAttribute('class', 'projects');
-    customProject.textContent =  `${title.charAt(0).toUpperCase()}${title.slice(1).toLowerCase()}`;
-    customProjectContainer.appendChild(customProject);
-    myProjectsList.push(customProject);
-
-    const xBtn = document.createElement('div');
-    xBtn.setAttribute('class', 'deleteProject');
+    const projectDelete = document.createElement('div');
+    projectDelete.classList.add('projectDelete');
 
     const trashIcon = new Image();
     trashIcon.src = trash;
-    trashIcon.setAttribute('id', 'trash')
-    xBtn.appendChild(trashIcon);
-    customProjectContainer.appendChild(xBtn);
+    trashIcon.classList.add('trash');
+    projectDelete.appendChild(trashIcon)
 
-    projects.appendChild(customProjectContainer);
-    projects.appendChild(addProjectText);
+    projectDiv.append(projectName, projectDelete)
+    projectList.appendChild(projectDiv);
+    projectList.appendChild(addProjectDiv);
 
-    document.querySelectorAll('.deleteProject').forEach((deleteButton) => {
-      deleteButton.addEventListener('click', () => {
-        deleteButton.parentElement.remove();
-      }) 
+    projectDelete.addEventListener('click', function() {
+      this.parentElement.remove();
+      myProjectsList.forEach((project, index) => {
+        myProjectsList.splice(index, 1)
+        localStorage.setItem('projects', JSON.stringify(myProjectsList));
+  
+      })
     })
-    input.value = ''; 
-  };
-  const cancelForm = () => {
-    
-    projects.removeChild(newProjectForm);
-    projects.appendChild(addProjectText);
-  };
+  }
+  const handleForm = (e) => {
+    newProject();
+    displayProject();
+    form.reset();
+    projectList.removeChild(form);
+    e.preventDefault();  
+  }
+  myProjectsList.forEach(displayProject)
+  
+  form.addEventListener('submit', handleForm)
+  addProjectBtn.addEventListener('click', displayForm)
+  cancelBtn.addEventListener('click', closeForm)
 
-  cancelBtn.addEventListener('click', cancelForm);
-  addProjectText.addEventListener('click', addProjectForm);
-  addBtn.addEventListener('click', submitForm);
-
-  return {myProjectsList, submitForm, addBtn }
+  return {}
+  
 })();
 
 export default myProjectsModule;
-
-
-
-
-

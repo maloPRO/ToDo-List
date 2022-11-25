@@ -2,10 +2,9 @@ import tabSelectionModule from './tabs';
 // eslint-disable-next-line no-unused-vars
 import css from './main.css';
 import trash from './images/delete.png';
+import myProjectsModule from './projects'
 
-tabSelectionModule.tabSelection();
-tabSelectionModule.customProjects();
-tabSelectionModule.defaults();
+tabSelectionModule.tabSelection();  
 
 const form = document.getElementById('form');
 
