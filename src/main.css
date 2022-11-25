@@ -94,7 +94,8 @@ body {
   font-weight: 400;
   color: #555;
 }
-.tab:hover {
+.tab:hover,
+.projects:hover {
   cursor: pointer;
   background-color: rgba(255,255,255,0.9);
   color: #333;
@@ -113,14 +114,25 @@ body {
 }
 .addProjectDiv {
   display: grid;
+  align-items: center;
+  justify-content: center;
   height: 2rem;
   padding: 0 20px 0 20px;
+  font-weight: 700;
+  margin-top: 3px;
+}
+.addProjectDiv button {
+  padding: 5px 10px 5px 10px;
+  border-radius: 3px;
+  background-color: #16a34a ;
+  border: none;
+  color: #fffada;
   font-weight: 700;
 }
 .addProjectDiv button:hover {
   cursor: pointer;
   color: #fffada;
-  background-color: #16a34a;
+  background-color: #1ee467 ;
   border: none;
   font-weight: 900;
 }
@@ -175,7 +187,13 @@ body {
   justify-content: space-between;
   font-size: 1.1rem;
   font-weight: 400;
+  color: #333;
   
+}
+.projectDelete {
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
 .trash {
   width: 1rem;
@@ -237,66 +255,22 @@ body {
 /* Tasks end */ 
 
 /* Tabs */
-
-#todayTab {
+.tabContent {
   width: 100%;
   height: 100%;
-  padding: 50px 100px 0 100px;
   display: grid;
-  grid-template: .3fr 5fr / 1fr;
+  grid-template: .5fr 5fr/ 1fr;
 }
-#todayTabNav {
-  display: flex;
-  grid-area: 1/1/2/2;
-}
-.dayHeadings {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 900;
-  font-size: 1.2rem;
-  margin-right: 7px;
-  display: grid;
-  align-items: flex-end;
-  justify-content: center;
-
-}
-.dates {
-  display: grid;
-  justify-content: center;
-  align-items: flex-end;
-  font-family: 'Roboto', sans-serif;
-  font-size: .9rem;
-}
-
-#section {
-  grid-area: 2/2/3/3;
-}
-
-.sectionHeader {
+.tabNav {
   display: flex;
   align-items: center;
   justify-content: left;
-  width: 100%;
-  height: 3rem;
-  padding-left: 50px;
-  font-size: 1.5rem;  
-  font-weight: 900;
+  font-size: 2rem;
+  font-weight: 700;
+  border-bottom: 1px solid #999;
   color: #555;
-  border-bottom: .5px solid #777;
-  font-family: 'Lato', sans-serif;
+  padding-left: 20px;
 }
-.tabIcons {
-  width: 2rem;
-  margin-right: 5px;
-}
-.customTabs {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-content: flex-start;
-  background-color: #f1f5f9;
-}
-
 
 /** Forms */
 #formContainer {

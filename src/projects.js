@@ -50,10 +50,11 @@ const myProjectsModule = (function() {
   const displayProject = ({title}) => {
     const projectDiv = document.createElement('div');
     projectDiv.setAttribute('class', 'projects');
+    projectDiv.classList.add('tab')
 
     const projectName = document.createElement('p');
     projectName.setAttribute('class', 'projectName');
-    projectName.textContent = title;
+    projectName.textContent = `${title.charAt(0).toUpperCase()}${title.slice(1).toLowerCase()}`;
 
     const projectDelete = document.createElement('div');
     projectDelete.classList.add('projectDelete');
@@ -83,13 +84,13 @@ const myProjectsModule = (function() {
     projectList.removeChild(form);
     e.preventDefault();  
   }
+
   myProjectsList.forEach(displayProject)
-  
   form.addEventListener('submit', handleForm)
   addProjectBtn.addEventListener('click', displayForm)
   cancelBtn.addEventListener('click', closeForm)
 
-  return {}
+  return {projectList}
   
 })();
 
