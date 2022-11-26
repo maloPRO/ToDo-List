@@ -5,8 +5,6 @@ const tabSelectionModule = (function () {
   const projectTabs = document.querySelectorAll('.projects')
   const section = document.querySelector('.section');
   const addTaskDiv = document.createElement('div');
-  const form = document.getElementById('form');
-  const formContainer = document.getElementById('formContainer');
 
   const taskIcon = new Image()
   taskIcon.src = taskicon;
@@ -57,10 +55,8 @@ const tabSelectionModule = (function () {
     } )
   })
 
-  addTaskDiv.addEventListener('click', () => {
-    formContainer.style.display = 'block';
-  })
-  return {}
+
+  return {addTaskDiv}
 })();
 
 export default tabSelectionModule;
