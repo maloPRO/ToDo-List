@@ -1,4 +1,5 @@
 import trash from './images/trash.png';
+import addIcon from './images/add.png';
 
 const myProjectsModule = (function() {
 
@@ -12,17 +13,20 @@ const myProjectsModule = (function() {
   const addProjectDiv = document.createElement('div');
   const addBtn = document.createElement('button');
   const cancelBtn = document.createElement('button');
+  const addPIcon = new Image ();
 
   addProjectDiv.setAttribute('class', 'addProjectDiv');
   form.setAttribute('class', 'projectForm');
   input.setAttribute('required', true);
   input.setAttribute('placeholder', 'Project Title');
 
-  addProjectBtn.textContent = '+ New Project';
   addBtn.textContent = 'Add';
   cancelBtn.textContent = 'Cancel';
   addBtn.setAttribute('type', 'submit');
   cancelBtn.setAttribute('type', 'button');
+
+  addPIcon.src = addIcon;
+  addProjectDiv.appendChild(addPIcon)
 
   addProjectDiv.appendChild(addProjectBtn);
   projectList.appendChild(addProjectDiv);
@@ -50,7 +54,6 @@ const myProjectsModule = (function() {
   const displayProject = ({title}) => {
     const projectDiv = document.createElement('div');
     projectDiv.setAttribute('class', 'projects');
-    projectDiv.classList.add('tab')
 
     const projectName = document.createElement('p');
     projectName.setAttribute('class', 'projectName');
@@ -87,7 +90,7 @@ const myProjectsModule = (function() {
 
   myProjectsList.forEach(displayProject)
   form.addEventListener('submit', handleForm)
-  addProjectBtn.addEventListener('click', displayForm)
+  addPIcon.addEventListener('click', displayForm)
   cancelBtn.addEventListener('click', closeForm)
 
   return {projectList}
