@@ -23,10 +23,10 @@ const tabSelectionModule = (function () {
       const tabContent = document.createElement('div');
       const tabNav = document.createElement('div');
       const tabBody = document.createElement('div');
-
+      
       tabBody.setAttribute('class', 'defaultTabBody');
-
       tabNav.setAttribute('class', 'tabNav');
+
       tabNav.textContent = `${this.textContent} Tasks`;
       tabContent.append(tabNav, tabBody);
       section.appendChild(tabContent);
@@ -43,10 +43,12 @@ const tabSelectionModule = (function () {
       const tabNav = document.createElement('div');
       const tabBody = document.createElement('div');
 
+      
       tabNav.setAttribute('class', 'tabNav')
       tabNav.textContent = `${this.textContent} Tasks`;
 
-      tabBody.setAttribute('class', 'projectTabBody')
+      tabBody.classList.add('projectBody');
+      tabBody.classList.add(`${this.textContent}Body`)
 
       tabBody.appendChild(addTaskDiv)
       tabContent.append(tabNav, tabBody);

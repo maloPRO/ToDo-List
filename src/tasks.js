@@ -1,12 +1,12 @@
 import tabSelectionModule from './tabs';
+import deleteIcon from './images/delete.png';
 
 const tasksModule = (function () {
   const taskList = [];
-  const form = document.getElementById('form');
+  const taskForm = document.querySelector('#form');
   const formContainer = document.getElementById('formContainer');
   const titleInput = document.getElementById('title');
   const dueDateInput = document.getElementById('dueDate');
-  const submitBtn = document.getElementById('submitBtn');
   const cancelBtn = document.getElementById('closeBtn');
   const addTask = tabSelectionModule.addTaskDiv;
 
@@ -16,14 +16,40 @@ const tasksModule = (function () {
       this.dueDate = dueDate;
     }
   }
-  function displayTask () {
-    console.log(taskList)
-  }
-
-  function createTask () {
-    const task = new Task (titleInput.value, dueDateInput.value);
+  const createTask = () => {
+    const task = new Task(titleInput.value, dueDateInput.value);
     taskList.push(task);
   }
+  
+  function displayTask () {
+    const tabContent = addTask.parentElement;
+    const tasksContainer = document.createElement('div');
+    tasksContainer.classList.add('taskContainer');
+
+    const checkBox = document.createElement('input');
+    const taskTitle = document.createElement('div');  
+    const taskDate = document.createElement('div');
+    const deleteTask = document.createElement('div');
+    const deleteBtn = new Image();
+
+    deleteBtn.src = deleteIcon;
+    deleteTask.appendChild(deleteBtn);
+    deleteBtn.classList.add('deleteTaskIcon');
+
+    checkBox.setAttribute('type', 'checkbox');
+
+    taskTitle.textContent = titleInput.value;
+    taskDate.textContent = dueDateInput.value;
+
+    tasksContainer.append(checkBox, taskTitle, taskDate, deleteTask)
+    tabContent.appendChild(tasksContainer);
+
+    deleteTask.addEventListener('click', function () {
+      this.parentElement.remove();
+      console.log(889);
+    })
+  }
+
   const openForm = () => {
     formContainer.style.display = 'block';
   }
@@ -36,8 +62,10 @@ const tasksModule = (function () {
     createTask()
     displayTask();
     closeFrom();
+    
   }
-  form.addEventListener('submit', handleForm)
+
+  taskForm.addEventListener('submit', handleForm)
   addTask.addEventListener('click', openForm);
   cancelBtn.addEventListener('click', closeFrom);
 

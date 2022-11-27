@@ -122,7 +122,7 @@ body {
   margin-top: 3px;
 } 
 .addProjectDiv img {
-  width: 2rem;
+  width: 1.5rem;
 }
 .addProjectDiv img:hover {
   cursor: pointer;
@@ -205,7 +205,6 @@ body {
   background-color: #dbeafe;
   padding: 3px;
   margin: 5px;
-  border-radius: 5px;
   font-family: 'Lato', sans-serif;
 }
 
@@ -218,6 +217,12 @@ body {
 }
 .taskTitle {
   font-size: 1rem;
+}
+.deleteTaskIcon {
+  width: 1rem;
+}
+.deleteTaskIcon:hover {
+  cursor: pointer;
 }
 /* Tasks end */ 
 
@@ -242,7 +247,7 @@ body {
   background-color: red;
 }
 .projectTabBody {
-  background-color: yellow;
+  background-color: #0c4a6e;
 }
 /* Add Task */
 .addTaskDiv {
