@@ -36,10 +36,12 @@ const myProjectsModule = (function() {
       this.title = title;
     }
   }
-  const newProject = () => {
+  const newProject = (title) => {
     const project = new Project(input.value);
     myProjectsList.push(project);
     localStorage.setItem('projects', JSON.stringify(myProjectsList));
+
+    return { title }
 
   }
   const displayForm = () => {
@@ -51,7 +53,7 @@ const myProjectsModule = (function() {
     projectList.removeChild(form);
     projectList.appendChild(addProjectDiv);
   }
-  const displayProject = ({title}) => {
+  const displayProject = ({ title }) => {
     const projectDiv = document.createElement('div');
     projectDiv.setAttribute('class', 'projects');
 
@@ -81,11 +83,12 @@ const myProjectsModule = (function() {
     })
   }
   const handleForm = (e) => {
-    newProject();
-    displayProject();
+    e.preventDefault();
+
+    const project = newProject(input.value);
+    displayProject(project);
     form.reset();
-    projectList.removeChild(form);
-    e.preventDefault();  
+    projectList.removeChild(form); 
   }
 
   myProjectsList.forEach(displayProject)
