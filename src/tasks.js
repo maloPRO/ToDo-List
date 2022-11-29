@@ -9,6 +9,7 @@ const tasksModule = (function () {
   const dueDateInput = document.getElementById('dueDate');
   const cancelBtn = document.getElementById('closeBtn');
   const addTask = tabSelectionModule.addTaskDiv;
+  const tabTask = tabSelectionModule.tabTasks;
 
   class Task {
     constructor (title, dueDate) {
@@ -19,8 +20,11 @@ const tasksModule = (function () {
   const createTask = (title, dueDate) => {
     const task = new Task(titleInput.value, dueDateInput.value);
     taskList.push(task);
-    localStorage.setItem('tasks', JSON.stringify(taskList));
+    tabTask.push(task);
+
+    localStorage.setItem(addTask.parentElement.parentElement.className, JSON.stringify(tabTask))
     return { title, dueDate }
+
   }
   
   function displayTask ({ title , dueDate }) {
@@ -61,11 +65,9 @@ const tasksModule = (function () {
   }
   
   function handleForm (event) {
-    event.preventDefault();
-    
+    event.preventDefault();  
     const task = createTask(titleInput.value, dueDateInput.value)
     displayTask(task);
-
     closeFrom();
     
   }

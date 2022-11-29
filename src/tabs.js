@@ -1,12 +1,12 @@
 import taskicon from './images/add.png';
 
-
 const tabSelectionModule = (function () {
 
   const defaultTabs = document.querySelectorAll('.tab');
   const projectTabs = document.querySelectorAll('.projects')
   const section = document.querySelector('.section');
   const addTaskDiv = document.createElement('div');
+  let tabTasks = []
 
   const taskIcon = new Image()
   taskIcon.src = taskicon;
@@ -48,6 +48,8 @@ const tabSelectionModule = (function () {
       const tabContent = document.createElement('div');
       const tabNav = document.createElement('div');
       const tabBody = document.createElement('div');
+
+      tabContent.setAttribute('class', `${this.textContent}`)
       
       tabNav.setAttribute('class', 'tabNav')
       tabNav.textContent = `${this.textContent} Tasks`;
@@ -59,11 +61,14 @@ const tabSelectionModule = (function () {
       tabContent.append(tabNav, tabBody);
       section.appendChild(tabContent);
 
+      tabTasks = JSON.parse(localStorage.getItem(`${tabContent.className}`))
+      console.log(tabTasks)
+
     } )
   })
 
 
-  return {addTaskDiv}
+  return {addTaskDiv, tabTasks }
 })();
 
 export default tabSelectionModule;

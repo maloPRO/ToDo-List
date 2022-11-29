@@ -84,7 +84,6 @@ const myProjectsModule = (function() {
   }
   const handleForm = (e) => {
     e.preventDefault();
-
     const project = newProject(input.value);
     displayProject(project);
     form.reset();
