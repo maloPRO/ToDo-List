@@ -70,7 +70,6 @@ const tasksModule = (function () {
     displayTask(task);
     closeFrom();
     
-    
   }
 
   taskList.forEach(displayTask);

@@ -20,7 +20,6 @@ const tabSelectionModule = (function () {
 
     tab.addEventListener('click', function () {
 
-
       while (section.firstChild) {
         section.removeChild(section.firstChild);
       }
@@ -87,12 +86,15 @@ const tabSelectionModule = (function () {
         tabContent.appendChild(tasksContainer);
 
         deleteTask.addEventListener('click', function () {
-          this.parentElement.remove()
+          this.parentElement.remove();
+          tabTasks.forEach((tab, index) => {
+            tabTasks.splice(index, 1)
+            localStorage.setItem(`${tabContent.className}`, JSON.stringify(tabTasks));
+          })
         })
-
+        
       })
-
-    } )
+    })
   })
 
 
