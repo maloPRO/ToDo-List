@@ -16,13 +16,16 @@ const tasksModule = (function () {
       this.dueDate = dueDate;
     }
   }
-  const createTask = () => {
+  const createTask = (title, dueDate) => {
     const task = new Task(titleInput.value, dueDateInput.value);
     taskList.push(task);
+    localStorage.setItem('tasks', JSON.stringify(taskList));
+    return { title, dueDate }
   }
   
-  function displayTask () {
+  function displayTask ({ title , dueDate }) {
     const tabContent = addTask.parentElement;
+    
     const tasksContainer = document.createElement('div');
     tasksContainer.classList.add('taskContainer');
 
@@ -38,15 +41,15 @@ const tasksModule = (function () {
 
     checkBox.setAttribute('type', 'checkbox');
 
-    taskTitle.textContent = titleInput.value;
-    taskDate.textContent = dueDateInput.value;
+    taskTitle.textContent = title;
+    taskDate.textContent = dueDate;
 
     tasksContainer.append(checkBox, taskTitle, taskDate, deleteTask)
     tabContent.appendChild(tasksContainer);
 
     deleteTask.addEventListener('click', function () {
       this.parentElement.remove();
-      console.log(889);
+
     })
   }
 
@@ -59,17 +62,20 @@ const tasksModule = (function () {
   
   function handleForm (event) {
     event.preventDefault();
-    createTask()
-    displayTask();
+    
+    const task = createTask(titleInput.value, dueDateInput.value)
+    displayTask(task);
+
     closeFrom();
     
   }
 
+  taskList.forEach(displayTask);
   taskForm.addEventListener('submit', handleForm)
   addTask.addEventListener('click', openForm);
   cancelBtn.addEventListener('click', closeFrom);
 
-  return {}
+  return { displayTask }
 })();
 
 export default tasksModule;
