@@ -1,4 +1,5 @@
 import taskicon from './images/add.png';
+import deleteIcon from './images/delete.png';
 
 const tabSelectionModule = (function () {
 
@@ -62,7 +63,30 @@ const tabSelectionModule = (function () {
       section.appendChild(tabContent);
 
       tabTasks = JSON.parse(localStorage.getItem(`${tabContent.className}`))
-      console.log(tabTasks)
+      
+      tabTasks.forEach((tabTask) => {
+        const tasksContainer = document.createElement('div');
+        tasksContainer.classList.add('taskContainer');
+    
+        const checkBox = document.createElement('input');
+        const taskTitle = document.createElement('div');  
+        const taskDate = document.createElement('div');
+        const deleteTask = document.createElement('div');
+        const deleteBtn = new Image();
+    
+        deleteBtn.src = deleteIcon;
+        deleteTask.appendChild(deleteBtn);
+        deleteBtn.classList.add('deleteTaskIcon');
+    
+        checkBox.setAttribute('type', 'checkbox');
+    
+        taskTitle.textContent = tabTask.title;
+        taskDate.textContent = tabTask.dueDate;
+    
+        tasksContainer.append(checkBox, taskTitle, taskDate, deleteTask)
+        tabContent.appendChild(tasksContainer);
+
+      })
 
     } )
   })

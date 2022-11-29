@@ -53,7 +53,7 @@ const tasksModule = (function () {
 
     deleteTask.addEventListener('click', function () {
       this.parentElement.remove();
-
+      
     })
   }
 
@@ -70,6 +70,7 @@ const tasksModule = (function () {
     displayTask(task);
     closeFrom();
     
+    
   }
 
   taskList.forEach(displayTask);
@@ -79,5 +80,6 @@ const tasksModule = (function () {
 
   return { displayTask }
 })();
+
 
 export default tasksModule;
