@@ -86,6 +86,10 @@ const tabSelectionModule = (function () {
         tasksContainer.append(checkBox, taskTitle, taskDate, deleteTask)
         tabContent.appendChild(tasksContainer);
 
+        deleteTask.addEventListener('click', function () {
+          this.parentElement.remove()
+        })
+
       })
 
     } )
