@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do</title>
+</head>
+<body>
+  <div class="content" id="content">
+    <div id="nav" class="nav">
+      <div class="navSection" id="navLeft">
+        <div class="navLeftItems" id="menu"><img id="menuIcon" class="icons" src="../src/images/menuIcon.png" alt=""></div>
+        <div class="navLeftItems" id="home"><img id="homeIcon" class="icons" src="../src/images/home.png" alt=""></div>
+      </div>
+      
+      <div id="navRight" class="navSection">
+        <div id="todo"><H3>ToDoo</H3></div>
+      </div>
+    </div>
+
+    <div id="sidebar" class="sidebar">
+      <div id="upperSideBar">
+        <div class="sideHeader">Home</div>
+        <div class="tab" id="allTasks"><img src="../src/images/inboxIcon.png" alt="" id="inboxIcon" class="icons">All</div>
+        <div class="tab" id="day"><img src="../src/images/day.png" alt="" id="dayIcon" class="icons">Today</div>
+        <div class="tab" id="upcoming"><img src="../src/images/calenderIcon.png" alt="" id="upcomingIcon" class="icons">Upcoming</div>
+      </div>
+      <div id="lowerSideBar">
+        <div id="projects">
+          <div id="projectsHeader" class="sideHeader">Projects</div>
+          <div id="projectList" class="projectList"></div>
+        </div>
+      </div>    
+    </div>
+
+    <div id="section" class="section">
+      <div>
+        <div class="tabNav">All Tasks</div>
+        <div class="defaultTabBody"></div>
+      </div>
+    </div>
+    <div id="formContainer">
+      <form action="" id="form">
+        <div id="formTitle">
+          <div id="formName">New Task</div>
+          <div id="formClose"><p>x</p></div>
+        </div>
+        <div class="taskInput" id="task-title">
+          <label for="title">Title</label>
+          <input type="text" id="title" class="input" name="title" required>
+        </div>
+        <div class="taskInput" id="task-dueDate">
+          <label for="date">Due Date</label>
+          <input type="date" id="dueDate" class="input" name="date" required>
+        </div>
+        <div id="form-buttons">
+          <button id="submitBtn" type="submit">Add Task</button>
+          <button id="closeBtn" type="button">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
