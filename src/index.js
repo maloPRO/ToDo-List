@@ -1,4 +1,4 @@
 import './main.css';
-import './projects'; 
-import './tabs'; 
-import './tasks';
+import './modules/projects'; 
+import './modules/tabs';
+import './modules/tasks';
