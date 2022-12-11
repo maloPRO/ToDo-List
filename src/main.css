@@ -119,16 +119,25 @@ body {
   height: 2rem;
   padding: 0 20px 0 20px;
   font-weight: 700;
-  margin-top: 3px;
+  margin-top: 10px;
+
 } 
-.addProjectDiv img {
-  width: 1.5rem;
+.addProjectDiv button {
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 50%;
+  background-color: #16a34a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.addProjectDiv img:hover {
-  cursor: pointer;
+.addProjectDiv button img {
+  width: 1.2rem;
+}
+.addProjectDiv button:hover {
   transform: scale(1.1);
 }
-
 .projectForm {
   display: grid;
   grid-template: 1fr 1fr / 1fr 1fr;
@@ -260,18 +269,18 @@ body {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
-  outline: 3px solid #16a34a;
   margin: 0 20px 20px 0;
+  background-color: #0c4a6e;
 }
 .addTaskDiv:hover {
   cursor: pointer;
   transform: scale(1.1);
 }
 .addTaskDiv img {
-  width: 3rem
+  width: 2rem
 }
 
 /** Forms */
