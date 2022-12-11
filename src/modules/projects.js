@@ -1,5 +1,5 @@
 import trash from '../images/trash.png';
-import addIcon from '../images/add.png';
+import addIcon from '../images/plus.png';
 
 const myProjectsModule = (function() {
 
@@ -26,7 +26,7 @@ const myProjectsModule = (function() {
   cancelBtn.setAttribute('type', 'button');
 
   addPIcon.src = addIcon;
-  addProjectDiv.appendChild(addPIcon)
+  addProjectBtn.appendChild(addPIcon)
 
   addProjectDiv.appendChild(addProjectBtn);
   projectList.appendChild(addProjectDiv);
