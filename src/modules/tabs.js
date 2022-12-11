@@ -1,4 +1,4 @@
-import taskicon from '../images/add.png';
+import taskicon from '../images/plus.png';
 import deleteIcon from '../images/delete.png';
 
 const tabSelectionModule = (function () {
